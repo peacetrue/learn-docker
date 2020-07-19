@@ -1,5 +1,5 @@
-= antora 模板项目
+= 学习 docker
 xiayx <xiayouxue@hotmail.com>
 v1.0, 2019-10-16: SNAPSHOT
 
-查看 http://peacetrue.github.io/public/peacetrue-template-antora/index.html[详情^]
+详情参考 https://peacetrue.cn/summarize/learn-docker/index.html[安宁的博客^]。

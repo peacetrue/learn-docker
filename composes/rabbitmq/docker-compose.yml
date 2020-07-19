@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  rabbitmq:
+    image: rabbitmq
+    container_name: rabbitmq
+    hostname: rabbitmq
+    environment:
+      #      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - ./volumes/etc/:/etc/rabbitmq/
+      - ./volumes/data/:/var/lib/rabbitmq/
+      - ./volumes/logs/:/var/log/rabbitmq/
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+
+
+# 启动
+# docker-compose up -d
+
+# 启用管理页面
+# docker exec -it rabbitmq bash
+# rabbitmq-plugins enable rabbitmq_management
+
+# 访问管理页面
+# http://127.0.0.1:15672/#/
+# guest/guest
