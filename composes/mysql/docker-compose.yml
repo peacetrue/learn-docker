@@ -8,8 +8,8 @@ networks:
 services:
   mysql:
     image: mysql
-    container_name: peacetrue-microservice-mysql
-    hostname: peacetrue-microservice-mysql
+    container_name: mysql
+    hostname: mysql
     command: --default-authentication-plugin=mysql_native_password
     expose:
       - 3306
