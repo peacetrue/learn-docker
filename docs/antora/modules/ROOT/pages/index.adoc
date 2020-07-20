@@ -4,3 +4,9 @@
 
 * composes 目录：存放组件的 docker-compose.yml 文件
 * images 目录：存放构建的镜像
+
+创建网络，所有 docker 应用都属于该网络：
+
+----
+$ docker network create peacetrue-microservice
+----

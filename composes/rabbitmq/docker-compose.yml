@@ -1,22 +1,30 @@
 version: '2'
 
+networks:
+  peacetrue-microservice:
+    external:
+      name: peacetrue-microservice
+
 services:
   rabbitmq:
     image: rabbitmq
     container_name: rabbitmq
     hostname: rabbitmq
     environment:
-      #      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
     volumes:
       - ./volumes/etc/:/etc/rabbitmq/
       - ./volumes/data/:/var/lib/rabbitmq/
       - ./volumes/logs/:/var/log/rabbitmq/
+    expose:
+      - 5672
+      - 15672
     ports:
       - 5672:5672
       - 15672:15672
-
+    networks:
+      - peacetrue-microservice
 
 
 # 启动
