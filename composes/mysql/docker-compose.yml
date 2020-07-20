@@ -1,0 +1,42 @@
+version: '2'
+
+networks:
+  peacetrue-microservice:
+    external:
+      name: peacetrue-microservice
+
+services:
+  mysql:
+    image: mysql
+    container_name: peacetrue-microservice-mysql
+    hostname: peacetrue-microservice-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    expose:
+      - 3306
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./volumes/my.cnf:/etc/mysql/my.cnf
+      - ./volumes/conf.d:/etc/mysql/conf.d
+      - ./volumes/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+    privileged: true
+    restart: always
+    networks:
+      - peacetrue-microservice
+
+
+# docker-compose up -d
+# docker exec -it peacetrue-microservice-mysql bash
+# mysql -uroot -p
+# select user,host,authentication_string from mysql.user;
+# select user,host from mysql.user;
+# update mysql.user set host= '%' where user='root';
+# grant all PRIVILEGES on . to root@'%' WITH GRANT OPTION;
+# ALTER user 'root'@'%' IDENTIFIED BY '12345678' PASSWORD EXPIRE NEVER;
+# ALTER user 'root'@'%' IDENTIFIED WITH mysql_native_password BY '12345678';
+# FLUSH PRIVILEGES;
+# docker run --name mysql-5730 -e MYSQL_ROOT_PASSWORD=12345678 -d mysql:5.7.30 -p3307:3306
+# docker run -it --network some-network --rm mysql mysql -hsome-mysql -uexample-user -p
+# docker-compose down
