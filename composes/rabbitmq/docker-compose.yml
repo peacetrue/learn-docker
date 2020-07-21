@@ -36,4 +36,5 @@ services:
 
 # 访问管理页面
 # http://127.0.0.1:15672/#/
+# http://peacetrue.cn:15672/#/
 # guest/guest
