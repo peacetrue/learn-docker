@@ -1,0 +1,30 @@
+version: '2'
+
+networks:
+  peacetrue-microservice:
+    external:
+      name: peacetrue-microservice
+
+services:
+  rabbitmq:
+    image: docker.io/openzipkin/zipkin
+    container_name: zipkin
+    hostname: zipkin
+    environment:
+      STORAGE_TYPE: elasticsearch
+      ES_HOSTS: http://elasticsearch:9200
+      ES_USERNAME: elastic
+      ES_PASSWORD: password
+    expose:
+      - 9411
+    ports:
+      - 9411:9411
+    networks:
+      - peacetrue-microservice
+
+# 启动
+# docker-compose up -d
+
+# 访问页面
+# http://peacetrue.cn:9411/zipkin/
+# elastic/password

@@ -1,0 +1,29 @@
+version: '3.2'
+
+networks:
+  peacetrue-microservice:
+    external:
+      name: peacetrue-microservice
+
+services:
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.8.0
+    container_name: kibana
+    hostname: kibana
+    volumes:
+      - type: bind
+        source: ./config/kibana.yml
+        target: /usr/share/kibana/config/kibana.yml
+        read_only: true
+    ports:
+      - "5601:5601"
+    networks:
+      - peacetrue-microservice
+
+# 启动
+# docker-compose up -d
+
+# 访问管理页面
+# http://127.0.0.1:5601/#/
+# http://peacetrue.cn:5601/#/
+# elastic/password

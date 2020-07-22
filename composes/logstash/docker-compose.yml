@@ -1,0 +1,29 @@
+version: '3.2'
+
+networks:
+  peacetrue-microservice:
+    external:
+      name: peacetrue-microservice
+
+services:
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.8.0
+    container_name: logstash
+    hostname: logstash
+    volumes:
+      - type: bind
+        source: ./config/logstash.yml
+        target: /usr/share/logstash/config/logstash.yml
+        read_only: true
+      - type: bind
+        source: ./config/pipeline
+        target: /usr/share/logstash/pipeline
+        read_only: true
+    ports:
+      - "5000:5000/tcp"
+      - "5000:5000/udp"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - peacetrue-microservice

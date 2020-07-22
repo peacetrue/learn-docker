@@ -1,7 +1,8 @@
 = ELK
 
-ELK. Elasticsearch, Logstash, and Kibana — three different tools usually used together.
-They are used for searching, analyzing, and visualizing log data in real-time.
+ELK：https://www.elastic.co/cn/elasticsearch/[Elasticsearch^]，https://www.elastic.co/cn/logstash[Logstash^] 和 https://www.elastic.co/products/kibana[Kibana^] - 三种通常一起使用的不同工具。它们用于实时搜索，分析和可视化日志数据。
 
-*composes/elk* check out from https://github.com/deviantony/docker-elk 。
+*composes/elk* 检出至 https://github.com/deviantony/docker-elk[docker-elk]。
+
+*composes/elasticsearch*、*composes/logstash*、*composes/kibana* 是笔者在 docker-elk 的基础上编写的单独版本，主要变化是 Elasticsearch 的数据存储在目录 *volumes/data* 下。
 

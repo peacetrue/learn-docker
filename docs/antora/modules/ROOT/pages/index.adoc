@@ -1,13 +1,34 @@
 = 简介
 
-本文介绍一些常用组件的 `docker-compose.yml`。
+本文介绍 `learn-docker` 项目包含的一些常用 docker 组件。
 
-* composes 目录：存放组件的 docker-compose.yml 文件
+* composes 目录：存放组件的 `docker-compose.yml` 文件
 * images 目录：存放构建的镜像
 
-创建网络，所有 docker 应用都属于该网络：
+== 网络
+
+首先，创建网络 `peacetrue-microservice`，所有 docker 应用都属于该网络：
 
 [source%nowrap,shell]
 ----
 $ docker network create peacetrue-microservice
 ----
+
+== 组件简介
+
+所有组件都是单节点部署。配置文件存储在 `./config` 目录，输出数据存储在 `./volumes` 文件。
+
+zipkin::
+链路追踪服务。
+rabbitmq::
+消息队列服务。
+mysql::
+关系型数据库。
+elk::
+弹性搜索服务，是 elasticsearch、logstash、kibana 的组合。
+elasticsearch::
+弹性搜索服务后端。
+logstash::
+弹性搜索服务数据采集端。
+kibana::
+弹性搜索服务前端。
