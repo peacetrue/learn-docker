@@ -17,7 +17,7 @@ services:
       - 8400:8080
       - 50000:50000
     volumes:
-      - ./volumes/jenkins-data/:/var/jenkins_home
+      - ./volumes/jenkins-data:/var/jenkins_home
       - ./volumes/var/run/docker.sock:/var/run/docker.sock
     networks:
       - peacetrue-microservice
@@ -25,6 +25,9 @@ services:
 # 启动
 # docker-compose up -d
 
+#赋予权限
+# sudo chown -R 1000:1000 ./volumes
+
 # 访问页面
-# http://peacetrue.cn:8400
+# http://jenkins.peacetrue.cn:8400
 # http://localhost:8400
