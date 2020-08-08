@@ -14,7 +14,7 @@ services:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
     volumes:
-      - ./volumes/etc/:/etc/rabbitmq/
+      - ./config/etc/:/etc/rabbitmq/
       - ./volumes/data/:/var/lib/rabbitmq/
       - ./volumes/logs/:/var/log/rabbitmq/
     expose:
