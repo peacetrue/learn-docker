@@ -6,8 +6,43 @@ networks:
       name: peacetrue-microservice
 
 services:
-  rabbitmq:
+  jenkins-docker:
+    image: docker:dind
+    container_name: jenkins-docker
+    hostname: jenkins-docker
+    privileged: true
+    expose:
+      - 2376
+    ports:
+      - 2376:2376
+#    environment:
+#      DOCKER_TLS_CERTDIR: /certs
+    volumes:
+#      - ./volumes/jenkins-docker-certs:/certs/client
+      - ./volumes/jenkins-data:/var/jenkins_home
+    networks:
+      - peacetrue-microservice
+  jenkins-blueocean:
     image: jenkinsci/blueocean
+    container_name: jenkins-blueocean
+    hostname: jenkins-blueocean
+    expose:
+      - 8080
+      - 50000
+    ports:
+      - 8400:8080
+      - 50000:50000
+    environment:
+      DOCKER_HOST: tcp://docker:2376
+#      DOCKER_CERT_PATH: /certs/client
+#      DOCKER_TLS_VERIFY: 1
+    volumes:
+      - ./volumes/jenkins-data:/var/jenkins_home
+#      - ./volumes/jenkins-docker-certs:/certs/client:ro
+    networks:
+      - peacetrue-microservice
+  jenkins:
+    image: jenkins/jenkins:lts-jdk11
     container_name: jenkins
     hostname: jenkins
     expose:
@@ -16,9 +51,13 @@ services:
     ports:
       - 8400:8080
       - 50000:50000
+    environment:
+      DOCKER_HOST: tcp://docker:2376
+    #      DOCKER_CERT_PATH: /certs/client
+    #      DOCKER_TLS_VERIFY: 1
     volumes:
       - ./volumes/jenkins-data:/var/jenkins_home
-      - ./volumes/var/run/docker.sock:/var/run/docker.sock
+    #      - ./volumes/jenkins-docker-certs:/certs/client:ro
     networks:
       - peacetrue-microservice
 
