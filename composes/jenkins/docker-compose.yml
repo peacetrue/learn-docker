@@ -22,25 +22,25 @@ services:
       - ./volumes/jenkins-data:/var/jenkins_home
     networks:
       - peacetrue-microservice
-  jenkins-blueocean:
-    image: jenkinsci/blueocean
-    container_name: jenkins-blueocean
-    hostname: jenkins-blueocean
-    expose:
-      - 8080
-      - 50000
-    ports:
-      - 8400:8080
-      - 50000:50000
-    environment:
-      DOCKER_HOST: tcp://docker:2376
-#      DOCKER_CERT_PATH: /certs/client
-#      DOCKER_TLS_VERIFY: 1
-    volumes:
-      - ./volumes/jenkins-data:/var/jenkins_home
-#      - ./volumes/jenkins-docker-certs:/certs/client:ro
-    networks:
-      - peacetrue-microservice
+#  jenkins-blueocean:
+#    image: jenkinsci/blueocean
+#    container_name: jenkins-blueocean
+#    hostname: jenkins-blueocean
+#    expose:
+#      - 8080
+#      - 50000
+#    ports:
+#      - 8400:8080
+#      - 50000:50000
+#    environment:
+#      DOCKER_HOST: tcp://docker:2376
+##      DOCKER_CERT_PATH: /certs/client
+##      DOCKER_TLS_VERIFY: 1
+#    volumes:
+#      - ./volumes/jenkins-data:/var/jenkins_home
+##      - ./volumes/jenkins-docker-certs:/certs/client:ro
+#    networks:
+#      - peacetrue-microservice
   jenkins:
     image: jenkins/jenkins:lts-jdk11
     container_name: jenkins
