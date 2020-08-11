@@ -56,7 +56,7 @@ services:
       - ./volumes/jenkins-data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
-      - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
+    #  - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
     #- ./volumes/jenkins-docker-certs:/certs/client:ro
     networks:
       - peacetrue-microservice
