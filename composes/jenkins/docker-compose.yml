@@ -51,8 +51,8 @@ services:
     ports:
       - 8400:8080
       - 50000:50000
-    environment:
-      DOCKER_HOST: tcp://docker:2376
+    #environment:
+    #  DOCKER_HOST: tcp://docker:2376
     #      DOCKER_CERT_PATH: /certs/client
     #      DOCKER_TLS_VERIFY: 1
     volumes:
