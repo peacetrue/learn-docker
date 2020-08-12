@@ -32,3 +32,27 @@ logstash::
 弹性搜索服务数据采集端。
 kibana::
 弹性搜索服务前端。
+
+
+== jenkins
+
+=== 访问慢
+
+参考
+
+* https://www.cnblogs.com/yoyoketang/p/12115432.html
+* https://cloud.tencent.com/developer/article/1563303
+
+----
+1,$s/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g
+
+https://mirrors.tuna.tsinghua.edu.cn/jenkins
+
+1,$s/http:\/\/www.google.com/https:\/\/www.baidu.com/g
+----
+
+=== 默认jdk8升级jdk9
+
+
+=== 多个项目仓库如何构建
+
